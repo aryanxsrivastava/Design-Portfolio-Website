@@ -2,7 +2,7 @@
 
 > A vibrant and dynamic portfolio showcasing the creativity, design, and development skills of Aryan Srivastava. Built with ❤️ using **Next.js**, **Tailwind CSS**, and deployed on **Netlify**.
 
-![Screenshot](public/images/preview.png)
+![Screenshot](public/images/SS.png)
 
 ---
 
