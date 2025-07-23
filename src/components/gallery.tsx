@@ -24,19 +24,40 @@ const featuredDesigns: Design[] = [
   { id: 4, title: "Sci-Fi Concept Art", category: "Concept Art", imageUrl: "https://placehold.co/600x450.png", imageWidth: 600, imageHeight: 450, aiHint: "scifi concept" },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+      ease: [0.6, 0.05, -0.01, 0.9],
+    },
+  },
+};
+
 export default function Gallery() {
-  const [hasMounted, setHasMounted] = useState(false);
-
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
-
-  if (!hasMounted) {
-    return null;
-  }
 
   return (
-    <section id="work" className="py-12 sm:py-16 lg:py-20">
+    <motion.section 
+      id="work" 
+      className="py-12 sm:py-16 lg:py-20"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={containerVariants}
+    >
       <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">My Work</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
@@ -44,13 +65,16 @@ export default function Gallery() {
           </p>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {featuredDesigns.map((design, i) => (
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        variants={containerVariants}
+      >
+          {featuredDesigns.map((design) => (
              <motion.div
               key={design.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
+              variants={itemVariants}
+              whileHover={{ scale: 1.05, y: -5 }}
+              transition={{ type: 'spring', stiffness: 300 }}
              >
               <div className="group relative bg-card p-4 rounded-lg border border-border shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:border-primary/50">
                 <div className="overflow-hidden rounded-md mb-4 aspect-video">
@@ -72,7 +96,7 @@ export default function Gallery() {
               </div>
             </motion.div>
           ))}
-        </div>
-    </section>
+        </motion.div>
+    </motion.section>
   );
 }

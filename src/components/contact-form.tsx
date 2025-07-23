@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
+import { motion } from 'framer-motion';
 
 import { Button } from "@/components/ui/button"
 import {
@@ -52,11 +53,24 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contact" className="py-12 sm:py-16 lg:py-20">
+    <motion.section 
+      id="contact" 
+      className="py-12 sm:py-16 lg:py-20"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.8 }}
+    >
       <div className="max-w-2xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Contact Me</h2>
         <p className="text-lg text-muted-foreground mb-8">Have a project in mind or just want to say hello? Drop me a line.</p>
-        <div className="p-8 rounded-lg bg-card border border-border">
+        <motion.div 
+          className="p-8 rounded-lg bg-card border border-border"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 text-left">
               <FormField
@@ -105,8 +119,8 @@ export default function ContactForm() {
               <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" size="lg">Send Message</Button>
             </form>
           </Form>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   )
 }
