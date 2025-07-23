@@ -8,7 +8,7 @@
 
 ## 🌐 Live Preview
 
-🔗 [Visit the Website](https://your-netlify-url.netlify.app)
+🔗 [Visit the Website](https://aryxndesigns.netlify.app)
 
 ---
 
@@ -53,18 +53,6 @@
 
 ---
 
-## 🧰 Getting Started
-
-Clone the repo and install dependencies:
-
-```bash
-git clone https://github.com/aryan-xyz/design-portfolio.git
-cd design-portfolio
-npm install
-npm run dev
-```
-
----
 
 ## 🤝 Contributing
 
