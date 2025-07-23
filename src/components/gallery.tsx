@@ -1,10 +1,9 @@
 "use client";
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
-import { Download } from 'lucide-react';
+import { Download, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 type Design = {
@@ -36,14 +35,16 @@ export default function Gallery() {
   }
 
   return (
-    <section id="work" className="py-12 sm:py-16 lg:py-20 bg-background">
+    <section id="work" className="py-12 sm:py-16 lg:py-20">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-2 font-headline sm:text-4xl">Featured Work</h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Here is a selection of my favorite projects. Feel free to explore and download any assets you find useful.
-        </p>
+        <div className="text-center mb-12">
+            <h2 className="text-4xl font-headline font-bold mb-4 sm:text-5xl text-primary">Featured Work</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            A selection of projects that showcase my passion for creating elegant and effective designs.
+            </p>
+        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {featuredDesigns.map((design, i) => (
              <motion.div
               key={design.id}
@@ -51,26 +52,24 @@ export default function Gallery() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
              >
-              <Card className="overflow-hidden group relative border-2 border-transparent hover:border-primary transition-all duration-300 shadow-md hover:shadow-xl bg-card">
-                <CardContent className="p-0">
+              <div className="group">
+                <div className="overflow-hidden rounded-lg shadow-xl mb-6">
                   <Image
                     src={design.imageUrl}
                     alt={design.title}
                     width={design.imageWidth}
                     height={design.imageHeight}
                     data-ai-hint={design.aiHint}
-                    className="w-full h-auto object-cover aspect-video"
+                    className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
-                    <h3 className="text-xl font-bold text-white mb-3">{design.title}</h3>
-                    <p className="text-sm text-primary-foreground/80 mb-4">{design.category}</p>
-                    <Button variant="secondary" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-                      <Download className="mr-2 h-4 w-4" />
-                      Download
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                </div>
+                <h3 className="text-2xl font-headline font-bold text-primary mb-2">{design.title}</h3>
+                <p className="text-md text-muted-foreground mb-4">{design.category}</p>
+                <Button variant="link" className="p-0 text-primary h-auto">
+                  Download Asset
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </div>
             </motion.div>
           ))}
         </div>

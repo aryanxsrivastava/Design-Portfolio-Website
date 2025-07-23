@@ -16,7 +16,6 @@ import {
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -52,65 +51,63 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-background">
+    <section id="contact" className="py-12 sm:py-16 lg:py-20">
       <div className="container mx-auto px-4">
+        <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-4xl font-headline font-bold mb-4 sm:text-5xl text-primary">Get in Touch</h2>
+            <p className="text-lg text-muted-foreground mb-12">Have a project in mind or just want to say hello? Drop me a line.</p>
+        </div>
         <div className="max-w-2xl mx-auto">
-            <Card>
-                <CardHeader className="text-center">
-                    <CardTitle className="text-3xl font-bold font-headline sm:text-4xl">Get in Touch</CardTitle>
-                    <CardDescription>Have a project in mind or just want to say hello? Drop me a line.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                        <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                            <FormItem>
-                            <FormLabel>Your Name</FormLabel>
-                            <FormControl>
-                                <Input placeholder="John Doe" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                            </FormItem>
-                        )}
+          <div className="p-8 rounded-lg bg-secondary/30 border border-border">
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-foreground">Your Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="John Doe" {...field} className="bg-background/50" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-foreground">Your Email</FormLabel>
+                      <FormControl>
+                        <Input placeholder="john.doe@example.com" {...field} className="bg-background/50" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-foreground">Your Message</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Tell me about your project or inquiry..."
+                          className="min-h-[120px] bg-background/50"
+                          {...field}
                         />
-                        <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                            <FormItem>
-                            <FormLabel>Your Email</FormLabel>
-                            <FormControl>
-                                <Input placeholder="john.doe@example.com" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                            </FormItem>
-                        )}
-                        />
-                        <FormField
-                        control={form.control}
-                        name="message"
-                        render={({ field }) => (
-                            <FormItem>
-                            <FormLabel>Your Message</FormLabel>
-                            <FormControl>
-                                <Textarea
-                                placeholder="Tell me about your project or inquiry..."
-                                className="min-h-[120px]"
-                                {...field}
-                                />
-                            </FormControl>
-                            <FormMessage />
-                            </FormItem>
-                        )}
-                        />
-                        <Button type="submit" className="w-full" size="lg">Send Message</Button>
-                    </form>
-                    </Form>
-                </CardContent>
-            </Card>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" size="lg">Send Message</Button>
+              </form>
+            </Form>
+          </div>
         </div>
       </div>
     </section>
