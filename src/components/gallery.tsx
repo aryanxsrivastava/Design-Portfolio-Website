@@ -1,9 +1,10 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import { Download, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 type Design = {
