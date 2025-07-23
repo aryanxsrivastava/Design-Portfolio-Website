@@ -3,96 +3,85 @@
 import { Button } from './ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Dribbble, Github, Twitter } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
+      staggerChildren: 0.1,
+      delayChildren: 0.5,
     },
   },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-};
+const textVariant = (delay: number) => ({
+    hidden: { y: "100%", skewY: 10 },
+    visible: {
+        y: 0,
+        skewY: 0,
+        transition: {
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+            delay
+        }
+    }
+})
+
+const lineVariant = {
+    hidden: { scaleX: 0 },
+    visible: {
+        scaleX: 1,
+        transition: {
+            duration: 1,
+            ease: "circOut",
+            delay: 1.2
+        }
+    }
+}
 
 export default function Hero() {
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  
   return (
-    <motion.section 
+    <section 
       id="home" 
-      className="py-20 md:py-32"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
+      className="relative flex items-center justify-center min-h-screen pt-24"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-12">
-        <div className="text-center md:text-left">
-          <motion.h1 
-            className="text-4xl md:text-6xl font-bold text-foreground mb-4"
-            variants={itemVariants}
-          >
-            Hey, I'm Aryxn
-          </motion.h1>
-          <motion.p 
-            className="text-xl md:text-2xl text-primary mb-8"
-            variants={itemVariants}
-          >
-            I'm a Photoshop Designer
-          </motion.p>
-          <motion.p 
-            className="text-muted-foreground mb-8 max-w-lg mx-auto md:mx-0"
-            variants={itemVariants}
-          >
-            I create visually stunning photo manipulations, digital paintings, and graphics that tell a story.
-          </motion.p>
-          <motion.div 
-            className="flex justify-center md:justify-start items-center gap-4 mb-8"
-            variants={itemVariants}
-          >
-            <Button variant="ghost" size="icon">
-                <Twitter className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon">
-                <Github className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon">
-                <Dribbble className="h-5 w-5" />
-            </Button>
-          </motion.div>
-          <motion.div className="flex justify-center md:justify-start gap-4" variants={itemVariants}>
-            <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link href="#work">My Work</Link>
-            </Button>
-            <Button size="lg" variant="secondary" asChild>
-              <Link href="#contact">Contact Me</Link>
-            </Button>
-          </motion.div>
+      <motion.div 
+        className="w-full text-center"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        style={{ y }}
+      >
+        <div className="font-bold uppercase text-[8vw] md:text-[10vw] leading-none tracking-tighter">
+            <div className="overflow-hidden">
+                 <motion.h1 variants={textVariant(0)}>Photoshop</motion.h1>
+            </div>
+            <div className="overflow-hidden">
+                <motion.h1 variants={textVariant(0.2)}>Designer &</motion.h1>
+            </div>
+            <div className="overflow-hidden">
+                <motion.h1 variants={textVariant(0.4)} className="text-primary">Digital Artist</motion.h1>
+            </div>
         </div>
         <motion.div 
-          className="relative w-full max-w-sm mx-auto md:max-w-none h-auto"
-          variants={{
-            hidden: { opacity: 0, scale: 0.8 },
-            visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: [0.6, 0.05, 0.01, 0.9] } }
-          }}
+          className="h-0.5 bg-foreground mx-auto mt-8"
+          style={{ width: "80%"}}
+          variants={lineVariant}
+        />
+        <motion.p
+            className="mt-8 text-lg md:text-xl max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 1 }}
         >
-          <div className="aspect-square rounded-full overflow-hidden border-4 border-primary shadow-2xl">
-            <Image 
-                src="https://placehold.co/500x500.png" 
-                alt="Aryxn's Portrait"
-                width={500}
-                height={500}
-                objectFit="cover"
-                data-ai-hint="designer portrait" 
-            />
-          </div>
-        </motion.div>
-      </div>
-    </motion.section>
+            [ Crafting raw, unapologetic visuals that demand attention ]
+        </motion.p>
+      </motion.div>
+    </section>
   );
 }

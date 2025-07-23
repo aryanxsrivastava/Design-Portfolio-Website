@@ -1,48 +1,54 @@
 "use client";
 
-import Image from 'next/image';
-import { Button } from './ui/button';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut", staggerChildren: 0.2 }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+};
 
 export default function About() {
   return (
     <motion.section 
       id="about" 
-      className="py-12 sm:py-16 lg:py-20"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.8 }}
+      className="py-24 sm:py-32 border-t-2 border-foreground"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={sectionVariants}
     >
-      <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">About Me</h2>
-      </div>
-      <div className="grid md:grid-cols-2 items-center gap-12 md:gap-16">
-        <motion.div 
-          className="relative aspect-square rounded-lg overflow-hidden shadow-2xl mx-auto max-w-sm md:max-w-md"
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-            <Image 
-                src="https://placehold.co/400x400.png" 
-                alt="Aryxn" 
-                layout="fill"
-                objectFit="cover"
-                data-ai-hint="designer portrait" 
-                className="transform transition-transform duration-500 hover:scale-105"
-            />
+      <div className="grid md:grid-cols-5 gap-8 items-start">
+        <motion.div className="md:col-span-2" variants={itemVariants}>
+          <h2 className="text-sm uppercase tracking-widest text-primary font-bold mb-4">[ About Me ]</h2>
         </motion.div>
-        <div className="text-center md:text-left">
-          <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-            I'm Aryxn, a passionate designer with a keen eye for aesthetics and a love for creating intuitive, beautiful user experiences. My philosophy is rooted in the belief that great design is not just about looks, but about creating a seamless connection between people and technology. With a background in both graphic arts and user interface design, I strive to blend creativity with functionality to deliver products that are both engaging and effective.
+        <motion.div className="md:col-span-3" variants={itemVariants}>
+          <p className="text-2xl md:text-3xl font-bold leading-tight mb-8">
+            I'm Aryxn, a designer obsessed with crafting raw, impactful visuals. My design ethos is simple: break rules, challenge conventions, and create work that demands attention. 
           </p>
-          <Button size="lg" asChild>
-            <Link href="#contact">Download CV</Link>
-          </Button>
-        </div>
+          <p className="text-muted-foreground text-lg mb-8">
+            With a background in both graphic arts and user interface design, I strive to blend creativity with functionality to deliver products that are both engaging and effective. My toolkit is my playground, and I'm always pushing the boundaries of what's possible in digital design.
+          </p>
+          <motion.a 
+            href="#contact" 
+            className="inline-flex items-center text-lg font-bold text-primary group"
+            whileHover="hover"
+          >
+            <span>Let's Collaborate</span>
+            <motion.div variants={{ hover: { x: 10 } }} transition={{ type: 'spring', stiffness: 300 }}>
+              <ArrowRight className="ml-2 h-5 w-5"/>
+            </motion.div>
+          </motion.a>
+        </motion.div>
       </div>
     </motion.section>
   );

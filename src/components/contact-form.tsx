@@ -19,35 +19,40 @@ import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
 
 const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  message: z.string().min(10, {
-    message: "Message must be at least 10 characters.",
-  }),
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
+  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
 })
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut", staggerChildren: 0.2 }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+};
 
 export default function ContactForm() {
   const { toast } = useToast()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      message: "",
-    },
+    defaultValues: { name: "", email: "", message: "" },
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values)
     toast({
-      title: "Message Sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
+      title: "[ MESSAGE SENT ]",
+      description: "Thanks for the transmission. I'll reply soon.",
       variant: 'default',
+      className: 'bg-primary text-primary-foreground border-2 border-primary-foreground font-bold'
     })
     form.reset()
   }
@@ -55,32 +60,28 @@ export default function ContactForm() {
   return (
     <motion.section 
       id="contact" 
-      className="py-12 sm:py-16 lg:py-20"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      className="py-24 sm:py-32 border-t-2 border-foreground"
+      initial="hidden"
+      whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.8 }}
+      variants={sectionVariants}
     >
-      <div className="max-w-2xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Contact Me</h2>
-        <p className="text-lg text-muted-foreground mb-8">Have a project in mind or just want to say hello? Drop me a line.</p>
-        <motion.div 
-          className="p-8 rounded-lg bg-card border border-border"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-        >
+       <div className="grid md:grid-cols-5 gap-8 items-start">
+        <motion.div className="md:col-span-2" variants={itemVariants}>
+          <h2 className="text-sm uppercase tracking-widest text-primary font-bold mb-4">[ Contact ]</h2>
+          <p className="text-muted-foreground">Get in touch. Send a transmission.</p>
+        </motion.div>
+        <motion.div className="md:col-span-3" variants={itemVariants}>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 text-left">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
               <FormField
                 control={form.control}
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-foreground">Your Name</FormLabel>
+                    <FormLabel className="font-bold text-lg">[ NAME ]</FormLabel>
                     <FormControl>
-                      <Input placeholder="John Doe" {...field} />
+                      <Input {...field} className="bg-transparent border-2 border-foreground rounded-none focus:bg-primary focus:text-primary-foreground focus:placeholder:text-primary-foreground" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -91,9 +92,9 @@ export default function ContactForm() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-foreground">Your Email</FormLabel>
+                    <FormLabel className="font-bold text-lg">[ EMAIL ]</FormLabel>
                     <FormControl>
-                      <Input placeholder="john.doe@example.com" {...field} />
+                      <Input {...field} className="bg-transparent border-2 border-foreground rounded-none focus:bg-primary focus:text-primary-foreground focus:placeholder:text-primary-foreground" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -104,11 +105,10 @@ export default function ContactForm() {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-foreground">Your Message</FormLabel>
+                    <FormLabel className="font-bold text-lg">[ MESSAGE ]</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Tell me about your project or inquiry..."
-                        className="min-h-[120px]"
+                        className="min-h-[150px] bg-transparent border-2 border-foreground rounded-none focus:bg-primary focus:text-primary-foreground focus:placeholder:text-primary-foreground"
                         {...field}
                       />
                     </FormControl>
@@ -116,7 +116,7 @@ export default function ContactForm() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" size="lg">Send Message</Button>
+              <Button type="submit" className="w-full bg-primary text-primary-foreground rounded-none border-2 border-primary-foreground hover:bg-foreground hover:text-background font-bold text-lg py-6">SEND TRANSMISSION</Button>
             </form>
           </Form>
         </motion.div>
