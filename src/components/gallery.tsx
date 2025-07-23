@@ -137,8 +137,8 @@ export default function Gallery() {
                     <Image
                       src={design.imageUrl}
                       alt={design.title}
-                      layout="fill"
-                      objectFit="cover"
+                      width={96}
+                      height={96}
                       data-ai-hint={design.aiHint}
                       className="transform scale-150 transition-transform duration-300 group-hover:scale-100"
                     />
