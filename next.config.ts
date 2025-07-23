@@ -1,7 +1,9 @@
-import type {NextConfig} from 'next';
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: 'export', // Enable static export
+  trailingSlash: true, // Ensure trailing slashes for static hosting
+
   typescript: {
     ignoreBuildErrors: true,
   },
