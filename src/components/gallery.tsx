@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 type Design = {
   id: number;
   title: string;
-  category: 'Illustration' | 'Web Design' | 'Logo';
+  category: 'Photo Manipulation' | 'Graphic Design' | 'Digital Painting' | 'Concept Art';
   imageUrl: string;
   imageWidth: number;
   imageHeight: number;
@@ -18,10 +18,10 @@ type Design = {
 };
 
 const featuredDesigns: Design[] = [
-  { id: 2, title: "E-commerce Homepage", category: "Web Design", imageUrl: "https://placehold.co/600x450.png", imageWidth: 600, imageHeight: 450, aiHint: "ecommerce homepage" },
-  { id: 5, title: "Minimalist Portfolio", category: "Web Design", imageUrl: "https://placehold.co/600x400.png", imageWidth: 600, imageHeight: 400, aiHint: "minimalist portfolio" },
-  { id: 8, title: "SaaS Dashboard", category: "Web Design", imageUrl: "https://placehold.co/800x500.png", imageWidth: 800, imageHeight: 500, aiHint: "saas dashboard" },
-  { id: 1, title: "Cosmic Landscape", category: "Illustration", imageUrl: "https://placehold.co/600x800.png", imageWidth: 600, imageHeight: 800, aiHint: "cosmic landscape" },
+  { id: 1, title: "Surreal Dreamscape", category: "Photo Manipulation", imageUrl: "https://placehold.co/600x800.png", imageWidth: 600, imageHeight: 800, aiHint: "surreal dreamscape" },
+  { id: 2, title: "Vintage Movie Poster", category: "Graphic Design", imageUrl: "https://placehold.co/600x450.png", imageWidth: 600, imageHeight: 450, aiHint: "vintage poster" },
+  { id: 3, title: "Fantasy Character", category: "Digital Painting", imageUrl: "https://placehold.co/600x400.png", imageWidth: 600, imageHeight: 400, aiHint: "fantasy character" },
+  { id: 4, title: "Sci-Fi Concept Art", category: "Concept Art", imageUrl: "https://placehold.co/800x500.png", imageWidth: 800, imageHeight: 500, aiHint: "scifi concept" },
 ];
 
 export default function Gallery() {
