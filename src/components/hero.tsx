@@ -48,7 +48,7 @@ export default function Hero() {
   return (
     <section 
       id="home" 
-      className="relative flex items-center justify-center min-h-screen pt-24"
+      className="relative flex items-center justify-center min-h-screen pt-24 px-4"
     >
       <motion.div 
         className="w-full text-center"
@@ -57,7 +57,7 @@ export default function Hero() {
         animate="visible"
         style={{ y }}
       >
-        <div className="font-bold uppercase text-[8vw] md:text-[10vw] leading-none tracking-tighter">
+        <div className="font-bold uppercase text-[12vw] sm:text-[10vw] lg:text-[8vw] leading-none tracking-tighter">
             <div className="overflow-hidden">
                  <motion.h1 variants={textVariant(0)}>Photoshop</motion.h1>
             </div>
@@ -74,7 +74,7 @@ export default function Hero() {
           variants={lineVariant}
         />
         <motion.p
-            className="mt-8 text-lg md:text-xl max-w-2xl mx-auto"
+            className="mt-8 text-md md:text-xl max-w-2xl mx-auto px-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 1 }}

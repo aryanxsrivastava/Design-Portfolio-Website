@@ -66,7 +66,7 @@ export default function ContactForm() {
       viewport={{ once: true, amount: 0.2 }}
       variants={sectionVariants}
     >
-       <div className="grid md:grid-cols-5 gap-8 items-start">
+       <div className="grid md:grid-cols-5 gap-8 items-start px-4">
         <motion.div className="md:col-span-2" variants={itemVariants}>
           <h2 className="text-sm uppercase tracking-widest text-primary font-bold mb-4">[ Contact ]</h2>
           <p className="text-muted-foreground">Get in touch. Send a transmission.</p>

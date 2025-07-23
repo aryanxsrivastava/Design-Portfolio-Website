@@ -59,7 +59,7 @@ export default function Gallery() {
       viewport={{ once: true, amount: 0.1 }}
       variants={sectionVariants}
     >
-      <div className="grid md:grid-cols-5 gap-8 items-start mb-16">
+      <div className="grid md:grid-cols-5 gap-8 items-start mb-16 px-4">
         <motion.div className="md:col-span-2" variants={itemVariants}>
           <h2 className="text-sm uppercase tracking-widest text-primary font-bold">[ Featured Work ]</h2>
         </motion.div>
@@ -79,18 +79,18 @@ export default function Gallery() {
              >
               <a href="#" className="block border-t-2 border-foreground group">
                 <motion.div 
-                  className="flex flex-col md:flex-row justify-between items-start md:items-center p-8 gap-4"
+                  className="flex flex-col md:flex-row justify-between items-start md:items-center p-4 sm:p-8 gap-4"
                   variants={hoverVariants}
                   initial="rest"
                   whileHover="hover"
                 >
                   <div className="flex items-center gap-4">
                     <span className="text-sm text-muted-foreground group-hover:text-primary-foreground">[ {String(index + 1).padStart(2, '0')} ]</span>
-                    <h3 className="text-3xl md:text-5xl font-bold uppercase">{design.title}</h3>
+                    <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold uppercase">{design.title}</h3>
                   </div>
-                  <div className="flex items-center gap-8">
-                    <p className="text-sm uppercase tracking-widest text-muted-foreground group-hover:text-primary-foreground">{design.category}</p>
-                    <div className="w-24 h-24 relative overflow-hidden hidden md:block">
+                  <div className="flex items-center gap-4 md:gap-8 self-end md:self-center">
+                    <p className="text-xs sm:text-sm uppercase tracking-widest text-muted-foreground group-hover:text-primary-foreground">{design.category}</p>
+                    <div className="w-16 h-16 sm:w-24 sm:h-24 relative overflow-hidden hidden md:block">
                         <Image
                             src={design.imageUrl}
                             alt={design.title}
@@ -104,6 +104,7 @@ export default function Gallery() {
                       initial={{ rotate: -45, scale: 1 }}
                       whileHover={{ rotate: 0, scale: 1.2 }}
                       transition={{ type: "spring", stiffness: 300}}
+                      className="hidden sm:block"
                     >
                       <ArrowRight className="h-10 w-10"/>
                     </motion.div>
