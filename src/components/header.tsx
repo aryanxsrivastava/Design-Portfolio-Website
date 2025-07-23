@@ -67,9 +67,9 @@ export default function Header() {
               </Link>
             </motion.div>
             <nav className="hidden md:flex items-center border-l-2 border-foreground h-full">
-              <NavLink href="#work" i={1} />
-              <NavLink href="#about" i={2} />
-              <NavLink href="#contact" i={3} />
+              <NavLink href="#work" i={1}>Work</NavLink>
+              <NavLink href="#about" i={2}>About</NavLink>
+              <NavLink href="#contact" i={3}>Contact</NavLink>
             </nav>
             <div className="md:hidden px-4">
               <button onClick={toggleMenu} className="focus:outline-none">
