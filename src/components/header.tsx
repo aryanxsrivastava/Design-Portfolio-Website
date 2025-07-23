@@ -24,7 +24,7 @@ export default function Header() {
         </div>
         <nav className="flex flex-1 items-center space-x-4 sm:justify-end">
           <Button variant="ghost" asChild>
-            <Link href="#gallery">Gallery</Link>
+            <Link href="#work">Work</Link>
           </Button>
           <Button variant="ghost" asChild>
             <Link href="#about">About</Link>
