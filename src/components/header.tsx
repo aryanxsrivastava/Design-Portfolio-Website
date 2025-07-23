@@ -62,8 +62,8 @@ export default function Header() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-24 bg-background border-b-2 border-l-2 border-r-2 border-foreground">
             <motion.div variants={navItemVariants} custom={0}>
-              <Link href="/" className="font-bold text-xl md:text-2xl uppercase px-4">
-                Aryxn Designs
+              <Link href="/" className="font-bold text-xl md:text-2xl  px-4">
+                @AryxnDesigns
               </Link>
             </motion.div>
             <nav className="hidden md:flex items-center border-l-2 border-foreground h-full">

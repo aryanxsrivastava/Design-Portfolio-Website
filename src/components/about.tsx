@@ -27,16 +27,25 @@ export default function About() {
       viewport={{ once: true, amount: 0.2 }}
       variants={sectionVariants}
     >
-      <div className="grid md:grid-cols-5 gap-8 items-start px-4">
+      <div className="grid md:grid-cols-5 gap-8 items-center px-4">
+        
+        {/* Image */}
         <motion.div className="md:col-span-2" variants={itemVariants}>
-          <h2 className="text-sm uppercase tracking-widest text-primary font-bold mb-4">[ About Me ]</h2>
+          <img 
+            src="/images/profile.jpeg" 
+            alt="Aryxn"
+            className="rounded-2xl shadow-lg w-full h-auto object-cover"
+          />
         </motion.div>
+
+        {/* Content */}
         <motion.div className="md:col-span-3" variants={itemVariants}>
-          <p className="text-xl md:text-3xl font-bold leading-tight mb-8">
-            I'm Aryxn, a designer obsessed with crafting raw, impactful visuals. My design ethos is simple: break rules, challenge conventions, and create work that demands attention. 
+          <h2 className="text-sm uppercase tracking-widest text-primary font-bold mb-4">[ About Me ]</h2>
+          <p className="text-xl md:text-3xl font-bold leading-tight mb-6">
+            I’m Aryxn — a visual designer passionate about creating bold, impactful work that breaks convention.
           </p>
           <p className="text-muted-foreground text-base md:text-lg mb-8">
-            With a background in both graphic arts and user interface design, I strive to blend creativity with functionality to deliver products that are both engaging and effective. My toolkit is my playground, and I'm always pushing the boundaries of what's possible in digital design.
+            I blend graphic design and UI principles to craft memorable digital experiences.
           </p>
           <motion.a 
             href="#contact" 
