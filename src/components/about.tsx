@@ -1,28 +1,31 @@
 import Image from 'next/image';
+import { Button } from './ui/button';
+import Link from 'next/link';
 
 export default function About() {
   return (
     <section id="about" className="py-12 sm:py-16 lg:py-20">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-5 items-center gap-8 md:gap-12">
-          <div className="md:col-span-2">
-            <div className="relative aspect-[4/5] rounded-lg overflow-hidden shadow-2xl">
-                <Image 
-                    src="https://placehold.co/400x500.png" 
-                    alt="Aryxn" 
-                    layout="fill"
-                    objectFit="cover"
-                    data-ai-hint="designer portrait" 
-                    className="transform transition-transform duration-500 hover:scale-105"
-                />
-            </div>
-          </div>
-          <div className="md:col-span-3 text-center md:text-left">
-            <h2 className="text-4xl font-headline font-bold mb-4 sm:text-5xl lg:text-6xl text-primary">About Me</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              I'm Aryxn, a passionate designer with a keen eye for aesthetics and a love for creating intuitive, beautiful user experiences. My philosophy is rooted in the belief that great design is not just about looks, but about creating a seamless connection between people and technology. With a background in both graphic arts and user interface design, I strive to blend creativity with functionality to deliver products that are both engaging and effective.
-            </p>
-          </div>
+      <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">About Me</h2>
+      </div>
+      <div className="grid md:grid-cols-2 items-center gap-12 md:gap-16">
+        <div className="relative aspect-square rounded-lg overflow-hidden shadow-2xl mx-auto max-w-sm md:max-w-md">
+            <Image 
+                src="https://placehold.co/400x400.png" 
+                alt="Aryxn" 
+                layout="fill"
+                objectFit="cover"
+                data-ai-hint="designer portrait" 
+                className="transform transition-transform duration-500 hover:scale-105"
+            />
+        </div>
+        <div className="text-center md:text-left">
+          <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+            I'm Aryxn, a passionate designer with a keen eye for aesthetics and a love for creating intuitive, beautiful user experiences. My philosophy is rooted in the belief that great design is not just about looks, but about creating a seamless connection between people and technology. With a background in both graphic arts and user interface design, I strive to blend creativity with functionality to deliver products that are both engaging and effective.
+          </p>
+          <Button size="lg" asChild>
+            <Link href="#contact">Download CV</Link>
+          </Button>
         </div>
       </div>
     </section>

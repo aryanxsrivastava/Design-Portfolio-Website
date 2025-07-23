@@ -3,62 +3,53 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'PT Sans', sans-serif;
 }
 
 @layer base {
   :root {
-    --background: 224 71% 4%;
-    --foreground: 210 40% 98%;
-    --card: 222 84% 5%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 84% 5%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222 47% 11%;
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 28% 65%;
-    --accent: 217 33% 17%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 216 34% 17%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --background: 210 9% 15%; /* Dark cool gray */
+    --foreground: 210 20% 90%; /* Light gray */
+    --card: 210 9% 20%; /* Slightly lighter gray for cards */
+    --card-foreground: 210 20% 90%;
+    --popover: 210 9% 20%;
+    --popover-foreground: 210 20% 90%;
+    --primary: 231 77% 60%; /* Deep Indigo */
+    --primary-foreground: 210 20% 98%;
+    --secondary: 187 83% 75%; /* Soft Cyan for accent */
+    --secondary-foreground: 210 9% 15%;
+    --muted: 210 9% 30%;
+    --muted-foreground: 210 20% 70%;
+    --accent: 187 83% 75%; /* Soft Cyan */
+    --accent-foreground: 210 9% 15%;
+    --destructive: 0 72% 51%; /* Red for destructive actions */
+    --destructive-foreground: 210 20% 98%;
+    --border: 210 9% 25%;
+    --input: 210 9% 25%;
+    --ring: 231 77% 60%;
     --radius: 0.5rem;
   }
+
   .dark {
-    --background: 224 71% 4%;
-    --foreground: 210 40% 98%;
-    --card: 222 84% 5%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 84% 5%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222 47% 11%;
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 28% 65%;
-    --accent: 217 33% 17%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 216 34% 17%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --background: 210 9% 15%;
+    --foreground: 210 20% 90%;
+    --card: 210 9% 20%;
+    --card-foreground: 210 20% 90%;
+    --popover: 210 9% 20%;
+    --popover-foreground: 210 20% 90%;
+    --primary: 231 77% 60%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 187 83% 75%;
+    --secondary-foreground: 210 9% 15%;
+    --muted: 210 9% 30%;
+    --muted-foreground: 210 20% 70%;
+    --accent: 187 83% 75%;
+    --accent-foreground: 210 9% 15%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 210 9% 25%;
+    --input: 210 9% 25%;
+    --ring: 231 77% 60%;
   }
 }
 
@@ -68,5 +59,9 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    background-image:
+      linear-gradient(hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 2rem 2rem;
   }
 }

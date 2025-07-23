@@ -46,68 +46,65 @@ export default function ContactForm() {
     toast({
       title: "Message Sent!",
       description: "Thanks for reaching out. I'll get back to you soon.",
+      variant: 'default',
     })
     form.reset()
   }
 
   return (
     <section id="contact" className="py-12 sm:py-16 lg:py-20">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl font-headline font-bold mb-4 sm:text-5xl text-primary">Get in Touch</h2>
-            <p className="text-lg text-muted-foreground mb-12">Have a project in mind or just want to say hello? Drop me a line.</p>
-        </div>
-        <div className="max-w-2xl mx-auto">
-          <div className="p-8 rounded-lg bg-secondary/30 border border-border">
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-foreground">Your Name</FormLabel>
-                      <FormControl>
-                        <Input placeholder="John Doe" {...field} className="bg-background/50" />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-foreground">Your Email</FormLabel>
-                      <FormControl>
-                        <Input placeholder="john.doe@example.com" {...field} className="bg-background/50" />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-foreground">Your Message</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          placeholder="Tell me about your project or inquiry..."
-                          className="min-h-[120px] bg-background/50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" size="lg">Send Message</Button>
-              </form>
-            </Form>
-          </div>
+      <div className="max-w-2xl mx-auto text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Contact Me</h2>
+        <p className="text-lg text-muted-foreground mb-8">Have a project in mind or just want to say hello? Drop me a line.</p>
+        <div className="p-8 rounded-lg bg-card border border-border">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 text-left">
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-foreground">Your Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="John Doe" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-foreground">Your Email</FormLabel>
+                    <FormControl>
+                      <Input placeholder="john.doe@example.com" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="message"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-foreground">Your Message</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Tell me about your project or inquiry..."
+                        className="min-h-[120px]"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" size="lg">Send Message</Button>
+            </form>
+          </Form>
         </div>
       </div>
     </section>

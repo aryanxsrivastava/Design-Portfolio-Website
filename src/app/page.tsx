@@ -9,15 +9,16 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
-      <main className="flex-1">
+      <main className="flex-1 container mx-auto px-4 sm:px-6 lg:px-8">
         <Hero />
-        <Gallery />
-        <Separator className="my-12 md:my-24 bg-border/20" />
+        <Separator className="my-16 md:my-24" />
         <About />
-        <Separator className="my-12 md:my-24 bg-border/20" />
+        <Separator className="my-16 md:my-24" />
+        <Gallery />
+        <Separator className="my-16 md:my-24" />
         <ContactForm />
       </main>
-      <footer className="bg-background py-8">
+      <footer className="py-8">
         <div className="container mx-auto px-4 text-center text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} Aryxn Designs. All Rights Reserved.</p>
         </div>
