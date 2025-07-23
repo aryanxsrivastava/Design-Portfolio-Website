@@ -1,8 +1,8 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  output: 'export', // Enable static export
-  trailingSlash: true, // Ensure trailing slashes for static hosting
+  output: 'export',
+  trailingSlash: true,
 
   typescript: {
     ignoreBuildErrors: true,
@@ -10,16 +10,7 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'placehold.co',
-        port: '',
-        pathname: '/**',
-      },
-    ],
-  },
+
 };
 
 export default nextConfig;
