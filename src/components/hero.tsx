@@ -78,7 +78,7 @@ export default function Hero() {
           className="relative w-full max-w-sm mx-auto md:max-w-none h-auto"
           variants={{
             hidden: { opacity: 0, scale: 0.8 },
-            visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: [0.6, 0.05, -0.01, 0.9] } }
+            visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: [0.6, 0.05, 0.01, 0.9] } }
           }}
         >
           <div className="aspect-square rounded-full overflow-hidden border-4 border-primary shadow-2xl">
