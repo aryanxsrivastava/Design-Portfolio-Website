@@ -33,15 +33,8 @@ const itemVariants = {
 export default function CartPage() {
   const { cart, removeFromCart, updateQuantity, clearCart } = useContext(CartContext);
   const { toast } = useToast();
-  const [razorpayKey, setRazorpayKey] = useState<string | null>(null);
   const [email, setEmail] = useState('');
   const router = useRouter();
-
-  useEffect(() => {
-    setRazorpayKey(process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || null);
-  }, []);
-
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const validateEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -95,8 +88,10 @@ Thank you for supporting Aryxn Designs.
     }
   };
 
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const makePayment = async () => {
+    const razorpayKey = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
     if (total <= 0) {
       toast({
         title: '[ ERROR ]',
