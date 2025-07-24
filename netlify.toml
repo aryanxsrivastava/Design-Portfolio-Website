@@ -2,5 +2,9 @@
   command = "next build"
   publish = ".next"
 
+[environment]
+  NEXT_PUBLIC_RAZORPAY_KEY_ID = "set_in_netlify_dashboard"
+  RAZORPAY_KEY_SECRET = "set_in_netlify_dashboard"
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"
