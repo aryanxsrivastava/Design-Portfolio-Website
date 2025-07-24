@@ -1,3 +1,4 @@
+
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -24,6 +25,8 @@ const formSchema = z.object({
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
 });
 
+type FormData = z.infer<typeof formSchema>;
+
 const sectionVariants = {
   hidden: { opacity: 0, y: 100 },
   visible: {
@@ -41,26 +44,23 @@ const itemVariants = {
 export default function ContactForm() {
   const { toast } = useToast();
 
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: { name: '', email: '', message: '' },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    try {
-      const formData = new FormData();
-      formData.append('name', values.name);
-      formData.append('email', values.email);
-      formData.append('message', values.message);
-      formData.append('_captcha', 'false');
-      formData.append('_honey', ''); // Honeypot
+  const encode = (data: any) => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+  }
 
-      const response = await fetch('https://formsubmit.co/aryan.srivastava101203@gmail.com', {
+  async function onSubmit(values: FormData) {
+    try {
+      const response = await fetch('/', {
         method: 'POST',
-        body: formData,
-        headers: {
-          Accept: 'application/json',
-        },
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({ 'form-name': 'contact', ...values }),
       });
 
       if (response.ok) {
@@ -72,16 +72,12 @@ export default function ContactForm() {
         });
         form.reset();
       } else {
-        toast({
-          title: '[ ERROR ]',
-          description: 'Something went wrong. Try again later.',
-          variant: 'destructive',
-        });
+        throw new Error('Form submission failed');
       }
     } catch (error) {
       toast({
         title: '[ ERROR ]',
-        description: 'Network error. Please try again.',
+        description: 'Something went wrong. Try again later.',
         variant: 'destructive',
       });
     }
@@ -103,7 +99,13 @@ export default function ContactForm() {
         </motion.div>
         <motion.div className="md:col-span-3" variants={itemVariants}>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form 
+              name="contact"
+              data-netlify="true"
+              onSubmit={form.handleSubmit(onSubmit)} 
+              className="space-y-8"
+            >
+              <input type="hidden" name="form-name" value="contact" />
               <FormField
                 control={form.control}
                 name="name"

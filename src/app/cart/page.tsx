@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -35,10 +35,20 @@ export default function CartPage() {
   const { toast } = useToast();
   const [email, setEmail] = useState('');
   const router = useRouter();
+  const formRef = useRef<HTMLFormElement>(null);
 
   const validateEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
+  
+  const encode = (data: any) => {
+    const formData = new FormData();
+    Object.keys(data).forEach(key => {
+        formData.append(key, data[key]);
+    });
+    return formData;
+  }
+
 
   const sendOrderEmails = async (customerEmail: string, orderCart: CartItem[], paymentId: string) => {
     const totalInRupees = (total * 80).toFixed(2);
@@ -68,23 +78,19 @@ Thank you for supporting Aryxn Designs.
     `;
     
     try {
-      const formData = new FormData();
-      formData.append('email', customerEmail);
-      formData.append('_cc', customerEmail);
-      formData.append('message', emailBody);
-      formData.append('_subject', emailSubject);
-      formData.append('_captcha', 'false');
-      
-      await fetch('https://formsubmit.co/aryan.srivastava101203@gmail.com', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          Accept: 'application/json',
-        },
-      });
+      if(formRef.current) {
+        (formRef.current.elements.namedItem('email') as HTMLInputElement).value = customerEmail;
+        (formRef.current.elements.namedItem('subject') as HTMLInputElement).value = emailSubject;
+        (formRef.current.elements.namedItem('message') as HTMLInputElement).value = emailBody;
 
+         await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(new FormData(formRef.current) as any).toString()
+        });
+      }
     } catch (error) {
-      console.error("Failed to send order email:", error);
+      console.error("Failed to send order email via Netlify forms:", error);
     }
   };
 
@@ -172,6 +178,19 @@ Thank you for supporting Aryxn Designs.
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground overflow-x-hidden">
+        {/* Hidden Netlify form for order confirmation */}
+        <form name="order-confirmation" ref={formRef} data-netlify="true" netlify-honeypot="bot-field" hidden>
+            <input type="hidden" name="form-name" value="order-confirmation" />
+            <p className="hidden">
+                <label>
+                Don’t fill this out if you’re human: <input name="bot-field" />
+                </label>
+            </p>
+            <input type="email" name="email" />
+            <input type="text" name="subject" />
+            <textarea name="message"></textarea>
+        </form>
+
       <header className="fixed top-0 left-0 right-0 z-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-24 bg-background border-b-2 border-l-2 border-r-2 border-foreground">
