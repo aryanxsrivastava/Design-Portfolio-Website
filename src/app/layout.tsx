@@ -1,6 +1,9 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
+import { CartProvider } from '@/context/CartContext';
+import Script from 'next/script';
+import FloatingCart from '@/components/FloatingCart';
 
 export const metadata: Metadata = {
   title: 'Aryxn Designs',
@@ -20,8 +23,12 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
       </head>
       <body className="antialiased">
-        {children}
+        <CartProvider>
+          {children}
+          <FloatingCart />
+        </CartProvider>
         <Toaster />
+        <Script src="https://checkout.razorpay.com/v1/checkout.js" />
       </body>
     </html>
   );

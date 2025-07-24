@@ -1,6 +1,7 @@
+
 "use client";
 
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
@@ -22,7 +23,7 @@ const navItemVariants = {
 const mobileMenuVariants = {
   hidden: { opacity: 0, y: "-100%" },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
-  exit: { opacity: 0, y: "-100%", transition: { duration: 0.5, ease: [0.6, 0.05, -0.01, 0.9] } }
+  exit: { opacity: 0, y: "-100%", transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
 }
 
 const mobileLinkVariants = {
@@ -62,14 +63,15 @@ export default function Header() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-24 bg-background border-b-2 border-l-2 border-r-2 border-foreground">
             <motion.div variants={navItemVariants} custom={0}>
-              <Link href="/" className="font-bold text-xl md:text-2xl  px-4">
+              <Link href="/" className="font-bold text-xl md:text-2xl px-4">
                 @AryxnDesigns
               </Link>
             </motion.div>
             <nav className="hidden md:flex items-center border-l-2 border-foreground h-full">
-              <NavLink href="#work" i={1}>Work</NavLink>
-              <NavLink href="#about" i={2}>About</NavLink>
-              <NavLink href="#contact" i={3}>Contact</NavLink>
+              <NavLink href="/#work" i={1}>Work</NavLink>
+              <NavLink href="/#about" i={2}>About</NavLink>
+               <NavLink href="/#shop" i={2.5}>Shop</NavLink>
+              <NavLink href="/#contact" i={3}>Contact</NavLink>
             </nav>
             <div className="md:hidden px-4">
               <button onClick={toggleMenu} className="focus:outline-none">
@@ -93,9 +95,18 @@ export default function Header() {
               <X className="h-10 w-10 text-foreground" />
             </button>
             <nav className="flex flex-col items-center text-center gap-8">
-              <motion.a href="#work" onClick={closeMenu} className="font-bold uppercase text-4xl" variants={mobileLinkVariants} initial="hidden" animate="visible" custom={1}>Work</motion.a>
-              <motion.a href="#about" onClick={closeMenu} className="font-bold uppercase text-4xl" variants={mobileLinkVariants} initial="hidden" animate="visible" custom={2}>About</motion.a>
-              <motion.a href="#contact" onClick={closeMenu} className="font-bold uppercase text-4xl" variants={mobileLinkVariants} initial="hidden" animate="visible" custom={3}>Contact</motion.a>
+              <motion.div variants={mobileLinkVariants} initial="hidden" animate="visible" custom={1}>
+                <Link href="/#work" onClick={closeMenu} className="font-bold uppercase text-4xl">Work</Link>
+              </motion.div>
+              <motion.div variants={mobileLinkVariants} initial="hidden" animate="visible" custom={2}>
+                <Link href="/#about" onClick={closeMenu} className="font-bold uppercase text-4xl">About</Link>
+              </motion.div>
+              <motion.div variants={mobileLinkVariants} initial="hidden" animate="visible" custom={2.5}>
+                <Link href="/#shop" onClick={closeMenu} className="font-bold uppercase text-4xl">Shop</Link>
+              </motion.div>
+              <motion.div variants={mobileLinkVariants} initial="hidden" animate="visible" custom={3}>
+                <Link href="/#contact" onClick={closeMenu} className="font-bold uppercase text-4xl">Contact</Link>
+              </motion.div>
             </nav>
           </motion.div>
         )}

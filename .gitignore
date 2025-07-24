@@ -1,46 +1,39 @@
-# === DEPENDENCIES ===
-node_modules/
-.pnp/
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# === NEXT.JS BUILD OUTPUT ===
-.next/
-out/         # ← export output folder (you don't want to commit this)
-build/       # sometimes used in CI/CD or custom builds
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
 
-# === TEST COVERAGE ===
-coverage/
+# testing
+/coverage
 
-# === SYSTEM FILES ===
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
 .DS_Store
 *.pem
 
-# === LOGS & DEBUG FILES ===
+# debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
 
-# === DEPLOYMENT ===
-.vercel      # if you've ever used Vercel locally
-.netlify     # (optional) if Netlify CLI was used locally
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# === TYPESCRIPT ===
+# vercel
+.vercel
+
+# typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# === ENVIRONMENT VARIABLES ===
-.env*
-!.env.example   # <-- include this if you have a template file
-
-# === GENKIT (optional Google Genkit) ===
-.genkit/
-
-# === FIREBASE DEBUG (if used) ===
-firebase-debug.log
-firestore-debug.log
