@@ -80,8 +80,8 @@ Thank you for supporting Aryxn Designs.
     try {
       if(formRef.current) {
         (formRef.current.elements.namedItem('email') as HTMLInputElement).value = customerEmail;
-        (formRef.current.elements.namedItem('subject') as HTMLInputElement).value = emailSubject;
-        (formRef.current.elements.namedItem('message') as HTMLInputElement).value = emailBody;
+        (form.current.elements.namedItem('subject') as HTMLInputElement).value = emailSubject;
+        (form.current.elements.namedItem('message') as HTMLInputElement).value = emailBody;
 
          await fetch('/', {
             method: 'POST',
@@ -97,7 +97,6 @@ Thank you for supporting Aryxn Designs.
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const makePayment = async () => {
-    const razorpayKey = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
     if (total <= 0) {
       toast({
         title: '[ ERROR ]',
@@ -106,7 +105,8 @@ Thank you for supporting Aryxn Designs.
       });
       return;
     }
-     if (!razorpayKey) {
+    
+    if (!process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID) {
       toast({
         title: '[ CONFIG ERROR ]',
         description: 'Razorpay Key ID is not configured. Please contact support.',
@@ -134,7 +134,7 @@ Thank you for supporting Aryxn Designs.
       const order = await res.json();
 
       const options = {
-        key: razorpayKey,
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
         amount: order.amount,
         currency: order.currency,
         name: 'Aryxn Designs',
