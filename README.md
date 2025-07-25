@@ -8,13 +8,15 @@
 
 ## 🌐 Live Preview
 
-🔗 [Visit the Website](https://aryxndesigns.netlify.app)
+🔗 [Visit the Website](https://aryxndesigns.in)
 
 ---
 
 ## 🚀 Features
 
 - 🖼️ Interactive design cards with image previews
+- 🛍️ **NEW:** Shop where users can **purchase designs** in **A3** or **A4** sizes
+- 💳 Seamless and **secure payment** with **Razorpay integration**
 - 🔍 Hover-based animations and transitions
 - 📱 Responsive layout for all screen sizes
 - 🧠 AI Hint tags and design categories
@@ -25,34 +27,24 @@
 
 ## 🛠️ Tech Stack
 
-| Technology     | Description                     |
-|----------------|---------------------------------|
-| **Next.js**    | React-based framework for SSR   |
-| **Tailwind CSS** | Utility-first CSS for styling |
-| **TypeScript** | Type-safe JavaScript            |
-| **Netlify**    | Deployment & hosting            |
+| Technology       | Description                             |
+|------------------|-----------------------------------------|
+| **Next.js**      | React-based framework for SSR           |
+| **Tailwind CSS** | Utility-first CSS for rapid styling     |
+| **TypeScript**   | Type-safe JavaScript                    |
+| **Netlify**      | Hosting and continuous deployment       |
+| **Razorpay**     | Secure and reliable payment gateway     |
 
 ---
 
-## 📁 Folder Structure
+## 🛍️ Shop Highlights
 
-```
-.
-├── public
-│   └── images        # Static images used in design cards
-├── components
-│   └── DesignCard.tsx # Component for each card
-├── pages
-│   └── index.tsx     # Main landing page
-├── styles
-│   └── globals.css   # Global styles
-├── types
-│   └── index.d.ts    # Type definitions
-└── README.md         # You are here :)
-```
+- 🖨️ Choose between **A3** and **A4** size formats for each design  
+- 🔐 Integrated with **Razorpay** for fast, secure checkout  
+- 📦 More prints & downloadable content coming soon!
+
 
 ---
-
 
 ## 🤝 Contributing
 
@@ -66,16 +58,20 @@ If you’d like to contribute or suggest features, feel free to:
 
 ## 📸 Credits
 
-All designs are original and created by **Aryan Srivastava**. Do not reproduce without permission.
+All designs are original and created by **Aryan Srivastava**.  
+Please do not reproduce or redistribute without permission.
 
 ---
 
 ## 📬 Connect with Me
 
-- 📸 [Instagram](https://www.instagram.com/aryansr.24)
-- 🧑‍💼 [LinkedIn](https://www.linkedin.com/in/aryansrivastava24/)
-- 🖥️ [Website](https://your-netlify-url.netlify.app)
+- 📸 [Instagram](https://www.instagram.com/aryxndesigns)
+- 🧑‍💼 [LinkedIn](https://www.linkedin.com/in/aryan-srivastava-35112a247/)
+- 🖥️ [Website](https://aryxndesigns.in)
 
 ---
 
 > “Design is not just what it looks like and feels like. Design is how it works.” – *Steve Jobs*
+
+
+
