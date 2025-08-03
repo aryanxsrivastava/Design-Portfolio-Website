@@ -76,7 +76,10 @@ function ShopItemCard({ item }: { item: ShopItemType }) {
 
   return (
     <motion.div className="border-2 border-foreground p-4 flex flex-col" variants={itemVariants}>
-      <div className="relative w-full h-96 mb-4">
+      <div 
+        className="relative w-full h-96 mb-4"
+        onContextMenu={(e) => e.preventDefault()}
+      >
         <Image 
           src={item.imageUrl} 
           alt={item.title}
