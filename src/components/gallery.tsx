@@ -22,11 +22,11 @@ const featuredDesigns: Design[] = [
     id: 1,
     title: "Michael Jackson Wallpaper",
     category: "Download Link",
-    imageUrl: "/images/wallpaper_aujla.png",
+    imageUrl: "/images/Michael_wallpaper.png",
     imageWidth: 800,
     imageHeight: 600,
-    aiHint: "karan aujla poster",
-    link: "https://drive.google.com/file/d/1pfqKvHvifb-Z1bQjara1xV7P045t-8kv/view?usp=drive_link"
+    aiHint: "michael jackson wallpaper",
+    link: "https://drive.google.com/file/d/1QLSh6zIodWK5vz-lRuCg5lLZ_2PqH6dq/view?usp=sharing"
   },
   {
     id: 2,
@@ -40,13 +40,13 @@ const featuredDesigns: Design[] = [
   },
   {
     id: 3,
-    title: "Phone Cases Design",
+    title: "Karan Aujla Wallaper",
     category: "Product Design",
-    imageUrl: "/images/cases_post.png",
+    imageUrl: "/images/wallpaper_aujla.png",
     imageWidth: 800,
     imageHeight: 600,
     aiHint: "fantasy character",
-    link: "https://www.instagram.com/p/CuT9i89Bvi4/?igsh=MXN3eWR5MzA0cGNzYg=="
+    link: "https://drive.google.com/file/d/1pfqKvHvifb-Z1bQjara1xV7P045t-8kv/view?usp=drive_link"
   },
   {
     id: 4,
