@@ -20,7 +20,7 @@ type Design = {
 const featuredDesigns: Design[] = [
   {
     id: 1,
-    title: "Karan Aujla Wallpaper",
+    title: "Michael Jackson Wallpaper",
     category: "Download Link",
     imageUrl: "/images/wallpaper_aujla.png",
     imageWidth: 800,

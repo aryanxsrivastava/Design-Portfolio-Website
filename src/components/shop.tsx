@@ -30,7 +30,7 @@ const shopItems: ShopItemType[] = [
     imageUrl: "/images/michael.png",
     imageWidth: 800,
     imageHeight: 800,
-    aiHint: "abstract design"
+    aiHint: "movie design"
   },
   {
     id: 'design-2',
