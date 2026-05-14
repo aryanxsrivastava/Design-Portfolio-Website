@@ -25,9 +25,9 @@ type ShopItemType = Omit<CartItem, 'size' | 'quantity'>;
 const shopItems: ShopItemType[] = [
   {
     id: 'design-1',
-    title: "Karan Aujla Poster",
+    title: "Michael Jackson Poster",
     price: 1.25,
-    imageUrl: "/images/aujla_poster.png",
+    imageUrl: "/images/michael.png",
     imageWidth: 800,
     imageHeight: 800,
     aiHint: "abstract design"
@@ -43,12 +43,12 @@ const shopItems: ShopItemType[] = [
   },
   {
     id: 'design-3',
-    title: "The Weeknd Poster",
+    title: "Karan Aujla Poster",
     price: 1.25,
-    imageUrl: "/images/dancinginflames.png",
+    imageUrl: "/images/aujla_poster.png",
     imageWidth: 800,
     imageHeight: 800,
-    aiHint: "retro poster"
+    aiHint: "abstract design"
   }
 ];
 
